@@ -11,9 +11,7 @@ img.logoNav{
   color: #fff;
   margin: 0.5em;
 }
-h6{
-  display: none;
-}
+
 .main-nav1 {
   overflow: hidden;
   text-align: center;
@@ -30,6 +28,14 @@ h6{
   margin: 0;
   padding: 0;
   text-align: center;
+  display: flex;
+
+}
+.main-nav1 img{
+  display: flex;
+}
+.main-nav1 .searchbar{
+  display: flex;
 }
 .main-nav1 button {
   background-color: #25b331;
@@ -416,11 +422,12 @@ span{
 
 }
 @media (min-width: 850px){
+
   span{
     display: none;
   }
   .main-nav1 .searchbar {
-      float: right;
+      /*float: right;*/
   }
   nav .main-nav1 {
       margin: 0;
@@ -432,6 +439,22 @@ span{
       font-size: 1.5em;
       text-align: center;
   }
+  .main-nav1 .contenedor{
+    max-width: 850px;
+    text-align: center;
+    margin: auto;
+  }
+  .main-nav1 img{
+    float: left;
+  }
+  .main-nav1 ul{
+    float: left;
+  }
+  .main-nav1 .searchbar{
+    float: left;
+    margin: 0;
+  }
+
   .main-nav1 li {
       float: left;
       margin: 0.5em;
@@ -450,7 +473,7 @@ span{
   }
   .main-nav1 ul {
       overflow: hidden;
-      width: 63%;
+      width: 50%;
       margin: auto;
       vertical-align: middle;
   }

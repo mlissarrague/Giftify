@@ -1,6 +1,8 @@
 
 <span class="ion-navicon-round" style="float: right"></span>
 <nav class="main-nav1">
+  <div class="contenedor">
+
     <img src="../imgs/logo2.png" alt="" class="logoNav"/>
     <ul>
 
@@ -13,4 +15,5 @@
       <input type="text" name="name" value="">
       <button type="button" name="button" class="sbutton">Search</button>
     </div>
+  </div>
 </nav>
