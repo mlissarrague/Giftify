@@ -1,3 +1,31 @@
+<?php
+	require("funciones.php");
+	if (estaLogueado()) {
+		header("Location:inicio.php");exit;
+	}
+	$errores = [];
+	$usernameDefault ="";
+	if ($_POST) {
+
+		$errores = validarLogin();
+
+		if (empty($errores))
+		{
+
+			$usuario = traerUsuarioPorUsuario($_POST["username"]);
+			loguear($usuario);
+			if (estaEnFormulario("recordame"))
+			{
+				guardarCookie($usuario);
+			}
+			header("Location:inicio.php");exit;
+		}
+  if (!isset($errores["username"])){
+      $usernameDefault = $_POST["username"];
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -20,9 +48,25 @@
                 <div class="menus">
                     <article>
                         <nav class="second-nav">
-                          <div class="usuario1"><label>Usuario</label><input type="text" name="name" value=""></div>
-                          <div class="contrasena1"><label>Contraseña</label><input type="password" name="name" value=""></p></div>
-                            <button type="submit" name="button">Ingresar</button>
+                          <div class=""style="color: #f00">
+
+
+                          </div>
+                          <form class="" method="post">
+                              <div class="usuario1"><label>Usuario</label><input type="text" name="username" id="email" value= "<?php  echo $usernameDefault ?>" ><br>
+                                <strong style="color:#f00">
+                                 <?php if(isset($errores["username"])){
+                                echo $errores["username"];}?></strong>
+                              </div>
+                              <div class="contrasena1"><label>Contraseña</label><input type="password" name="password" value="" id="password"><br>
+                                <strong style="color:#f00"> <?php if(isset($errores["password"])){
+                                  echo $errores["password"];
+                                }?></strong>
+                              </div>
+                                <button type="submit" name="button">Ingresar</button>
+                                Recordame
+                          			<input name="recordame" type="checkbox" value="true">
+                          </form>
                         </nav>
                     </article>
 
@@ -90,7 +134,7 @@
         </section>
         <!-- banner2 -->
         <section class="banner2">
-            <img src="../imgs/slider.png" alt="" />
+
         </section>
         <?php require_once('mainFooter.php'); ?>
     </div>

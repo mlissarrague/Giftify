@@ -1,4 +1,6 @@
 <?php
+
+require('funciones.php');
 $errores = [];
 $nombreDefault = "";
 $emailDefault = "";
@@ -6,7 +8,50 @@ $apellidoDefault= "";
 $telefonoDefault = "";
 $diaDefault = "";
 $anioDefault = "";
-require('funciones.php');
+$usernameDefault = "";
+if (estaLogueado()) {
+    header("Location:inicio.php");exit;
+}
+if (!empty($_POST))
+{
+
+    //Se envió información
+    $errores = validarRegistracion();
+
+    if (empty($errores))
+    {
+        //No hay Errores
+
+        //Primero: Lo registro
+        registrarUsuario();
+
+
+        //Segundo: Lo envio al exito
+        header("Location:exito2.php");exit;
+    }
+    if (empty($errores["name"])){
+        $nombreDefault = $_POST["name"];
+    }
+    if (empty($errores["lastname"])){
+      $apellidoDefault = $_POST["lastname"];
+    }
+    if (empty($errores["mail"])){
+        $emailDefault = $_POST["mail"];
+    }
+    if (empty($errores["telefono"])){
+      $telefonoDefault = $_POST["telefono"];
+    }
+    if (empty($errores["dia"])){
+        $diaDefault = $_POST["dia"];
+    }
+    if (empty($errores["anio"])){
+      $anioDefault = $_POST["anio"];
+    }
+    if (!isset($errores["username"])){
+        $usernameDefault = $_POST["username"];
+    }
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -143,6 +188,16 @@ require('funciones.php');
                         <input type="radio" name="sexo" value="masculino">
                         <label>Masculino</label>
                     </div>
+                    <div class="">
+                        <label>Nombre de Usuario</label>
+                        <br>
+                        <input type="text" placeholder="Nombre de usuario" class="username" name="username" value="<?php echo $usernameDefault?>">
+                        <br>
+                        <strong style="color: #f00">
+                        <?php if(isset($errores["username"])){
+                          echo $errores["username"];
+                        }
+                        ?></strong>
                     <div class="botones">
                       <br>
                       <button type="submit">Registrarse</button>

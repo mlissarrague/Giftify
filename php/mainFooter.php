@@ -3,7 +3,7 @@
         <article class="footer-nav">
 
             <ul>
-                <li><a href="home.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#">Productos</a></li>
                 <li><a href="preguntas.php">Preguntas frecuentes</a></li>
                 <li><a href="registro2.php">Registrarse</a></li>
