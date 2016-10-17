@@ -6,7 +6,7 @@
   </head>
   <body>
     Bienvenido!
-    <script src="../js/javascript4.js" charset="utf-8"></script>
+    <script src="js/javascript4.js" charset="utf-8"></script>
 
   </body>
 </html>

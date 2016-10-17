@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Preguntas frecuentes</title>
-    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body class="preguntas1">
@@ -93,7 +93,7 @@
         </article>
     </section>
 <?php require_once('mainFooter.php') ?>
-<script src="../js/javascript1.js" charset="utf-8"></script>
+<script src="js/javascript1.js" charset="utf-8"></script>
 </body>
 
 </html>

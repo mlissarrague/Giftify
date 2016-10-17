@@ -141,7 +141,7 @@ function registrarUsuario(){
         }
         else {
             $usuario = traerUsuarioPorUsuario($_POST["username"]);
-            
+
             if (!password_verify($_POST["password"], $usuario["password"])) {
                 $errores["password"] ="La contraseña es incorrecta";
             }
@@ -185,4 +185,9 @@ function registrarUsuario(){
         }
     }
     autologuear();
+    function cambiarPassword($username){
+      traerTodosLosUsuarios($username);
+      $usuarioACambiar = json_decode($username);
+      $usuarioACambiar["password"] = $_POST["password"];
+    };
 ?>

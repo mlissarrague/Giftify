@@ -1,6 +1,8 @@
 <?php
-
-require('funciones.php');
+require_once("funciones.php");
+require_once("soporte.php");
+require_once("clases/validadorUsuario.php");
+$repoUsuarios = $repo->getRepositorioUsuarios();
 $errores = [];
 $nombreDefault = "";
 $emailDefault = "";
@@ -18,16 +20,30 @@ if (!empty($_POST))
     //Se envió información
     $errores = validarRegistracion();
 
-    if (empty($errores))
-    {
-        //No hay Errores
+    if (empty($errores)){
+      $validador = new ValidadorUsuario();
+      //Se envió información
+      $errores = $validador->validar($_POST, $repo);
 
-        //Primero: Lo registro
-        registrarUsuario();
+      if (empty($errores)){
+          //No hay Errores
 
+          //Primero: Lo registro
+          $usuario = new Usuario(
+              null,
+              $_POST["name"],
+              $_POST["lastname"],
+              $_POST["mail"],
+              $_POST["username"],
+              $_POST["password"],
+              $_POST["telefono"]
+          );
+          $usuario->setPassword($_POST["password"]);
+          $usuario->guardar($repoUsuarios);
 
-        //Segundo: Lo envio al exito
-        header("Location:exito2.php");exit;
+          //Segundo: Lo envio al exito
+          header("Location:exito2.php");exit;
+
     }
     if (empty($errores["name"])){
         $nombreDefault = $_POST["name"];
@@ -51,7 +67,7 @@ if (!empty($_POST))
         $usernameDefault = $_POST["username"];
     }
   }
-
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,7 +76,7 @@ if (!empty($_POST))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Login</title>
-    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body class="registro">
@@ -209,7 +225,7 @@ if (!empty($_POST))
         </form>
         <?php require_once('mainFooter.php') ?>
     </div>
-    <script src="../js/javascript3.js" charset="utf-8"></script>
+    <script src="js/javascript3.js" charset="utf-8"></script>
 </body>
 
 </html>

@@ -1,30 +1,28 @@
 <?php
-	require("funciones.php");
-	if (estaLogueado()) {
+	require_once("soporte.php");
+	require_once("clases/validadorLogin.php");
+
+	if ($auth->estaLogueado()) {
 		header("Location:inicio.php");exit;
 	}
 	$errores = [];
-	$usernameDefault ="";
 	if ($_POST) {
 
-		$errores = validarLogin();
+		$validador = new ValidadorLogin();
+
+		$errores = $validador->validar($_POST, $repo);
 
 		if (empty($errores))
 		{
-
-			$usuario = traerUsuarioPorUsuario($_POST["username"]);
-			loguear($usuario);
-			if (estaEnFormulario("recordame"))
+			$usuario = $repo->getRepositorioUsuarios()->traerUsuarioPorEmail($_POST["email"]);
+			$auth->loguear($usuario);
+			if ($validador->estaEnFormulario("recordame"))
 			{
-				guardarCookie($usuario);
+				$auth->guardarCookie($usuario);
 			}
 			header("Location:inicio.php");exit;
 		}
-  if (!isset($errores["username"])){
-      $usernameDefault = $_POST["username"];
-  }
-}
-
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,6 +33,12 @@
     <title>Giftify</title>
     <link rel="stylesheet" href="../css/master.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+		<!-- <script src="../js/javascript2.js" charset="utf-8"></script> -->
+		<script src="../carrusel/jquery-3.1.1.min.js"></script>
+		<script src="../carrusel/owl.carousel.js"></script>
+		<script src="../carrusel/carrusel.js"></script>
+		<link rel="stylesheet" href="../carrusel/owl-carousel/owl.theme.css">
+		<link rel="stylesheet" href="../carrusel/carrusel.css">
 </head>
 <body class="home">
 
@@ -66,6 +70,7 @@
                                 <button type="submit" name="button">Ingresar</button>
                                 Recordame
                           			<input name="recordame" type="checkbox" value="true">
+																<a href="olvideMiContrasena.php">Olvide Mi Contraseña</a>
                           </form>
                         </nav>
                     </article>
@@ -134,11 +139,29 @@
         </section>
         <!-- banner2 -->
         <section class="banner2">
+					<body>
+				    <!-- <img src="assets/armadura.jpg" alt="" /> -->
+				    <div id="owl-demo" class="owl-carousel" style="whith: 400px;">
+				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
 
+				  </div>
         </section>
         <?php require_once('mainFooter.php'); ?>
     </div>
-    <script src="../js/javascript2.js" charset="utf-8"></script>
+
 </body>
 
 </html>

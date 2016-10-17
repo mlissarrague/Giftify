@@ -12,8 +12,8 @@
             </ul>
         </article>
         <article class="social-logos" id="social-logos">
-            <img src="../imgs/facebook.png" alt="facebook" />
-            <img src="../imgs/twitter.png" alt="twitter" />
+            <img src="imgs/facebook.png" alt="facebook" />
+            <img src="imgs/twitter.png" alt="twitter" />
         </article>
     </section>
 </footer>
