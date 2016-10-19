@@ -20,7 +20,7 @@
 		}
 
 		public function loguear(Usuario $usuario) {
-        	$_SESSION["usuarioLogueado"] = $usuario->getEmail();
+        	$_SESSION["usuarioLogueado"] = $usuario->getUsername();
     	}
 
     	public function traerUsuarioLogueado(RepositorioUsuarios $repo) {
@@ -37,14 +37,14 @@
 
 
 	    public function guardarCookie(Usuario $usuario) {
-	        setcookie("usuarioLogueado", $usuario->getEmail(), time() + 3600 * 24);
+	        setcookie("usuarioLogueado", $usuario->getUsername (), time() + 3600 * 24);
 	    }
 
 	    private function autologuear(RepositorioUsuarios $repo) {
 	        session_start();
 	        if (!$this->estaLogueado()) {
 	            if (isset($_COOKIE["usuarioLogueado"])) {
-	                $usuario = $repo->traerUsuarioPorEmail($_COOKIE["usuarioLogueado"]);
+	                $usuario = $repo->traerUsuarioPorUsuario($_COOKIE["usuarioLogueado"]);
 
 	                $this->loguear($usuario);
 	            }

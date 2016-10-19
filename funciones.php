@@ -159,7 +159,7 @@ function registrarUsuario(){
             return null;
         }
         $mailLogueado = $_SESSION["usuarioLogueado"];
-        return traerUsuarioPorEmail($mailLogueado);
+        return traerUsuarioPorUsuario($mailLogueado);
     }
 
     function estaLogueado() {

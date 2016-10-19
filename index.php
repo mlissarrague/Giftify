@@ -2,9 +2,9 @@
 	require_once("soporte.php");
 	require_once("clases/validadorLogin.php");
 
-	if ($auth->estaLogueado()) {
-		header("Location:inicio.php");exit;
-	}
+	// if ($auth->estaLogueado()) {
+	// 	header("Location:index.php");exit;
+	// }
 	$errores = [];
 	$usernameDefault="";
 	if ($_POST) {
@@ -17,13 +17,14 @@
 		}
 		if (empty($errores))
 		{
-			$usuario = $repo->getRepositorioUsuarios()->traerUsuarioPorEmail($_POST["email"]);
+			$usuario = $repo->getRepositorioUsuarios()->traerUsuarioPorUsuario($_POST["username"]);
+			var_dump($usuario);
 			$auth->loguear($usuario);
 			if ($validador->estaEnFormulario("recordame"))
 			{
 				$auth->guardarCookie($usuario);
 			}
-			header("Location:inicio.php");exit;
+			header("Location:index.php");exit;
 		}
 	}
 ?>
@@ -46,58 +47,50 @@
 <body class="home">
 
     <div class="contenedor">
+			<?php
+				require("funciones.php");
+			?>
+			<header>
+					<section class="header">
+							<article class="logo">
+									<img src="imgs/logo2.png" alt="logo" />
+							</article>
+							<div class="menus">
+									<article>
+											<nav class="second-nav">
+												<div class="">
+													<?php
+													if ($auth->estaLogueado()){
+														include_once 'headerLogueado.php'	;
+													}else {
+														include_once'headerLogin.php';
+													}
+													?>
+												</div>
+											</nav>
+									</article>
 
-        <header>
-            <section class="header">
-                <article class="logo">
-                    <img src="imgs/logo2.png" alt="logo" />
-                </article>
-                <div class="menus">
-                    <article>
-                        <nav class="second-nav">
-                          <div class=""style="color: #f00">
+									<span class="ion-navicon-round" style="color: 000"></span>
+									<nav class="main-nav">
+											<img src="" alt="" />
 
+											<ul class="nav-resp">
+													<li><a href="#">Home</a></li>
+													<li><a href="registro2.php">Registrarse</a></li>
+													<li><a href="#">Store</a></li>
+													<li><a href="#">Contacts</a></li>
+													<li>
+															<input type="text" name="name" value="">
+															<button type="button" name="button" class="sbutton">Search</button>
+													</li>
+											</ul>
+									</nav>
+							</div>
+							</article>
+					</section>
 
-                          </div>
-                          <form class="" method="post">
-                              <div class="usuario1"><label>Usuario</label><input type="text" name="username" id="email" value= "<?php  echo $usernameDefault ?>" ><br>
-                                <strong style="color:#f00">
-                                 <?php if(isset($errores["username"])){
-                                echo $errores["username"];}?></strong>
-                              </div>
-                              <div class="contrasena1"><label>Contraseña</label><input type="password" name="password" value="" id="password"><br>
-                                <strong style="color:#f00"> <?php if(isset($errores["password"])){
-                                  echo $errores["password"];
-                                }?></strong>
-                              </div>
-                                <button type="submit" name="button">Ingresar</button>
-                                Recordame
-                          			<input name="recordame" type="checkbox" value="true">
-																<a href="olvideMiContraseña.php">Olvide Mi Contraseña</a>
-                          </form>
-                        </nav>
-                    </article>
+			</header>
 
-                    <span class="ion-navicon-round" style="color: 000"></span>
-                    <nav class="main-nav">
-                        <img src="" alt="" />
-
-                        <ul class="nav-resp">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="registro2.php">Registrarse</a></li>
-                            <li><a href="#">Store</a></li>
-                            <li><a href="#">Contacts</a></li>
-                            <li>
-                                <input type="text" name="name" value="">
-                                <button type="button" name="button" class="sbutton">Search</button>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                </article>
-            </section>
-
-        </header>
         <!-- banner -->
         <section class="banner">
             <img src="imgs/banner1.jpg" alt="banner" />
