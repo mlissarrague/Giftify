@@ -11,14 +11,15 @@ function preguntas() {
     }
     for (var i = 0; i < pregunta.length; i++) {
         var t = pregunta[i];
+        // t.className += " radius";
         function cambiar() {
           var liRTA = this.nextElementSibling;
             if (liRTA.style.display == 'none') {
                 liRTA.style.display = 'block';
-                pregunta.style.borderRadius = '5px 5px 0 0';
+                this.className += " radiusCambiado";
             } else {
                 liRTA.style.display = 'none';
-                pregunta.style.borderRadius = '5px';
+                this.className = "pregunta";
             };
         }
         t.addEventListener("click", cambiar);

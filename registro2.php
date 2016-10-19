@@ -30,13 +30,12 @@ if (!empty($_POST))
 
           //Primero: Lo registro
           $usuario = new Usuario(
-              null,
               $_POST["name"],
               $_POST["lastname"],
               $_POST["mail"],
-              $_POST["username"],
+              $_POST["telefono"],
               $_POST["password"],
-              $_POST["telefono"]
+              $_POST["username"]
           );
           $usuario->setPassword($_POST["password"]);
           $usuario->guardar($repoUsuarios);
@@ -75,7 +74,7 @@ if (!empty($_POST))
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Login</title>
+    <title>registro</title>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>

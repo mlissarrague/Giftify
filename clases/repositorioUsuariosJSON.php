@@ -27,9 +27,9 @@
 	        		$usuarioArray["name"],
 							$usuarioArray["lastname"],
 	        		$usuarioArray["email"],
-	        		$usuarioArray["username"],
-	        		$usuarioArray["password"],
-	        		$usuarioArray["telefono"]
+	        		$usuarioArray["telefono"],
+							$usuarioArray["password"],
+							$usuarioArray["username"]
 	        	);
 
 	            $usuarios[] = $usuario;

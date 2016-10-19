@@ -51,14 +51,14 @@ function validarRegistracion(){
 
 function registrarUsuario(){
         $name = $_POST["name"];
+        $lastname = $_POST["lastname"];
         $email = $_POST["mail"];
         $username = $_POST["username"];
         $password = $_POST["password"];
         $telefono = $_POST["telefono"];
-        $lastname = $_POST["lastname"];
 
         require_once("usuario.php");
-        $usuario = new Usuario($name,$lastname ,$email,$username,$password,$telefono);
+        $usuario = new Usuario($name,$lastname ,$email,$password,$telefono,$username);
         //2: Pasarlo a JSON
         $jsonUsuario = json_encode($usuario->getUsuario());
         //3: Lo guardo en archivo

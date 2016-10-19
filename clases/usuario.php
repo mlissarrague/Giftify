@@ -5,13 +5,13 @@
 		private $name;
 		private $lastname;
 		private $email;
-		private $username;
 		private $password;
 		private $telefono;
+		private $username;
 
 
 
-		public function __construct($name, $lastname, $email,  $password,$telefono,$username) {
+		public function __construct($name, $lastname, $email, $telefono, $password, $username) {
 			$this->name =$name;
 			$this->lastname = $lastname;
 			$this->email = $email;

@@ -326,7 +326,7 @@ img.logoNav{
     margin: 0;
     font-size: 2em;
     padding: 0.5em;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px;
   }
   .respuesta {
       background-color: #fff;
@@ -350,6 +350,18 @@ img.logoNav{
     display: block;
     width: 100%;
     height: auto;
+  }
+  .owl-item {
+    float: left;
+  }
+  .owl-carousel{
+    overflow: hidden;
+  }
+  .radius{
+    border-radius: 10px;
+  }
+  .radiusCambiado{
+    border-radius: 10px 10px 0 0;
   }
 @media (min-width: 400px) {
     .home .her, .home .him, .home .kids {

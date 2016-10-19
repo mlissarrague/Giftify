@@ -1,5 +1,5 @@
 <?php
-
+	require_once 'usuario.php';
 	abstract class RepositorioUsuarios {
 		abstract public function guardar(Usuario $usuario);
 		abstract public function traerTodosLosUsuarios();
@@ -29,4 +29,19 @@
 
 	        return false;
 	    }
+			public function traerUsuarioPorUsuario($username){
+				$usuarios = $this->traerTodosLosUsuarios();
+				foreach ($usuarios as $usuario) {
+					if($usuario->getUsername() == $username){
+						return $usuario;
+					}
+				}
+			}
+			public function existeElUsuario($username){
+				$usuario = $this->traerUsuarioPorUsuario($username);
+				if($usuario){
+					return true;
+				}
+				return false;
+			}
 	}

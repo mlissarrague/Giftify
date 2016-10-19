@@ -6,12 +6,15 @@
 		header("Location:inicio.php");exit;
 	}
 	$errores = [];
+	$usernameDefault="";
 	if ($_POST) {
 
 		$validador = new ValidadorLogin();
 
 		$errores = $validador->validar($_POST, $repo);
-
+		if (empty($errores["username"])){
+			$usernameDefault = $_POST["username"];
+		}
 		if (empty($errores))
 		{
 			$usuario = $repo->getRepositorioUsuarios()->traerUsuarioPorEmail($_POST["email"]);
@@ -31,14 +34,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="utf-8">
     <title>Giftify</title>
-    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-		<!-- <script src="../js/javascript2.js" charset="utf-8"></script> -->
-		<script src="../carrusel/jquery-3.1.1.min.js"></script>
-		<script src="../carrusel/owl.carousel.js"></script>
-		<script src="../carrusel/carrusel.js"></script>
-		<link rel="stylesheet" href="../carrusel/owl-carousel/owl.theme.css">
-		<link rel="stylesheet" href="../carrusel/carrusel.css">
+		<!-- <script src="js/javascript2.js" charset="utf-8"></script> -->
+		<script src="carrusel/jquery-3.1.1.min.js"></script>
+		<script src="carrusel/owl.carousel.js"></script>
+		<script src="carrusel/carrusel.js"></script>
+		<link rel="stylesheet" href="carrusel/owl-carousel/owl.theme.css">
+		<link rel="stylesheet" href="carrusel/carrusel.css">
 </head>
 <body class="home">
 
@@ -47,7 +50,7 @@
         <header>
             <section class="header">
                 <article class="logo">
-                    <img src="../imgs/logo2.png" alt="logo" />
+                    <img src="imgs/logo2.png" alt="logo" />
                 </article>
                 <div class="menus">
                     <article>
@@ -70,7 +73,7 @@
                                 <button type="submit" name="button">Ingresar</button>
                                 Recordame
                           			<input name="recordame" type="checkbox" value="true">
-																<a href="olvideMiContrasena.php">Olvide Mi Contraseña</a>
+																<a href="olvideMiContraseña.php">Olvide Mi Contraseña</a>
                           </form>
                         </nav>
                     </article>
@@ -97,13 +100,13 @@
         </header>
         <!-- banner -->
         <section class="banner">
-            <img src="../imgs/banner1.jpg" alt="banner" />
+            <img src="imgs/banner1.jpg" alt="banner" />
         </section>
         <section class="categorias">
           <div class="herhim">
             <article class="her">
 
-              <img src="../imgs/her.jpg" alt="" class="imgcategorias" />
+              <img src="imgs/her.jpg" alt="" class="imgcategorias" />
                 <div class="textocate">
 
                 <h2>Her</h2>
@@ -114,7 +117,7 @@
               </div>
             </article>
             <article class="him">
-              <img src="../imgs/him.jpg" alt=""  class="imgcategorias"/>
+              <img src="imgs/him.jpg" alt=""  class="imgcategorias"/>
                 <div class="textocate">
 
                 <h2>Him</h2>
@@ -126,7 +129,7 @@
             </article>
           </div>
             <article class="kids">
-              <img src="../imgs/kids.jpg" alt="" class="imgcategorias" />
+              <img src="imgs/kids.jpg" alt="" class="imgcategorias" />
                 <div class="textocate">
 
                 <h2>Kids</h2>
@@ -141,21 +144,19 @@
         <section class="banner2">
 					<body>
 				    <!-- <img src="assets/armadura.jpg" alt="" /> -->
-				    <div id="owl-demo" class="owl-carousel" style="whith: 400px;">
-				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-				    <div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
-						<div class="item"><img class="lazyOwl" data-src="../imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div id="owl-demo" class="owl-carousel">
+				    <div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+				    <div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
+						<div class="item"><img class="lazyOwl" data-src="imgs/regalo.jpg" alt="Lazy Owl Image"></div>
 
 				  </div>
         </section>
