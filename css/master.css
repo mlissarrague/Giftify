@@ -238,71 +238,52 @@ img.logoNav{
   top: 0;
 }
 .registro{
-  margin: auto;
-  font-size: 10px;
+  background-color: #bfbfbf;
   background-image: url(../imgs/mesa.jpg);
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
   background-attachment: fixed;
+  margin: 0;
+}
+.registro .container{
+  max-width: 900px;
+  margin: 0 auto;
+}
+.registro h1{
+  color: #fff;
+}
+.registro form{
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 7px;
+  margin: 5px auto;
+}
+
+fieldset{
+  border: none;
+}
+.registro label{
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.registro form button{
+  background-color: #00bcd4;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.registro .typeText{
+  border-radius: 7px;
+  border: 2px solid #fff;
+  font-size: 1.2em;
+  padding: 3px;
   width: 100%;
-  height: 100%;
+  margin: 5px auto;
 }
-.registro .container {
-    width: 100%;
-    height: 100%;
-    /*background-color: rgba(0, 0, 0, 0.5);*/
-    margin: 0;
-}
-.registro h1 {
-    color: #fff;
-    margin-top: 20px;
-}
-.registro fieldset {
-    border: none;
-    margin: auto;
-    font-size: 1.5em;
-}
-.registro legend {
-    margin: auto;
-}
-.registro div{
-  margin: 20px;
-}
-.registro .datos {
-    text-align: left;
-    background-color: rgba(0, 0, 0, 0.42);
-    border-radius: 10px;
-    padding: 10px;
-}
-.registro label {
-    text-transform: uppercase;
-    background-color: rgba(0, 0, 0, 0.54);
-    color: #fff;
-    font-weight: bold;
-    margin: 20px 10px;
-}
-.registro input {
-  margin: 1em;
-    padding: 10px;
-    bottom: 10px;
-}
-.registro .botones button {
-    border-radius: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 10px;
-    background-color: #22b3a5;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-}
-.registro .login {
-    margin-top: 15px;
-    color: #fff;
-}
-
-
 .preguntas1{
     font-size: 10px;
     background-image: url(../imgs/mesa.jpg);
@@ -393,6 +374,16 @@ img.logoNav{
         width: 45%;
         clear: both;
     }
+    .primeraColumna{
+      float: left;
+    }
+    .segundaColumna{
+      float: right;
+    }
+    .nombreApellido, .mailTelefono, .contrasenaConfirm{
+      width: 100%;
+      height: 100px;
+    }
     .contenido {
         width: 47%;
         float: left;
@@ -423,14 +414,11 @@ img.logoNav{
       display: inline-block;
       font-size: 1.5em;
   }
-  .registro .datos {
-      text-align: center;
-      padding: 27px;
+  .registro form{
+    max-width: 500px;
+    margin: 5px auto;
   }
-  .registro .botones {
-      text-align: center;
-      margin-top: 15px;
-  }
+
   .contenido {
       width: 30%;
       font-size: 0.80em;
@@ -674,10 +662,6 @@ span{
           /*HOME*/
             width: 40%;
         }
-.registro .datos {
-    width: 50%;
-    margin: auto;
-}
 .respuesta{
   display: none;
 }
@@ -690,15 +674,4 @@ span{
       margin: auto;
   }
 
-}
-@media (min-width: 1100px){
-  .primeraColumna{
-    float: left;
-  }
-  .segundaColumna{
-    float: right;
-  }
-  .fechasDeNacimiento{
-    clear: both;
-  }
 }

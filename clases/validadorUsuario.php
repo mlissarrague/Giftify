@@ -32,7 +32,7 @@
 					if(trim(empty($_POST["username"]))){
 						$errores["username"] = "Ingrese un usuario";
 					}
-					elseif (existeElUsuario($_POST["username"])){
+					elseif ($repoUsuarios->existeElUsuario($_POST["username"])){
 							$errores["username"] = "El usuario ya existe";
 					}
 					if (trim(empty($_POST["password"]))){

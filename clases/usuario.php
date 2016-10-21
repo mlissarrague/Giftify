@@ -53,7 +53,7 @@
 			$this->email = $email;
 		}
 		public function setPassword($password) {
-			$this->password = $password;
+			$this->password = password_hash($password, PASSWORD_DEFAULT);
 		}
 		public function setlastname($lastname) {
 			$this->email = $lastname;

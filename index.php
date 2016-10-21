@@ -1,7 +1,7 @@
 <?php
 	require_once("soporte.php");
 	require_once("clases/validadorLogin.php");
-	// 
+	//
 	// if ($auth->estaLogueado()) {
 	// 	header("Location:index.php");exit;
 	// }
