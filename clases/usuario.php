@@ -8,17 +8,17 @@
 		private $password;
 		private $telefono;
 		private $username;
+		private $fecha;
 
-
-
-		public function __construct($name, $lastname, $email, $telefono, $password, $username) {
+		public function __construct($name, $lastname, $email, $telefono, $password, $username, $fecha) {
 			$this->name =$name;
 			$this->lastname = $lastname;
 			$this->email = $email;
 			$this->username = $username;
 			$this->password = $password;
 			$this->telefono = $telefono;
-		}
+			$this->fecha = $fecha;
+	}
 
 		public function getName(){
 			return $this->name;
@@ -40,7 +40,9 @@
 		public function getTelefono(){
 			return $this->telefono;
 		}
-
+		public function getFecha(){
+			return $this->fecha;
+		}
 		public function setName($name) {
 			$this->name = $name;
 		}
@@ -51,13 +53,16 @@
 			$this->email = $email;
 		}
 		public function setPassword($password) {
-			$this->password = password_hash($password, PASSWORD_DEFAULT);
+			$this->password = $password;
 		}
 		public function setlastname($lastname) {
 			$this->email = $lastname;
 		}
 		public function setTelefono($telefono) {
 			$this->telefono = $telefono;
+		}
+		public function setFecha($fecha){
+			$this->fecha = $fecha;
 		}
 
 		public function guardar(RepositorioUsuarios $repo) {
@@ -71,7 +76,8 @@
 				"email" => $this->getEmail(),
 				"password" => $this->getPassword(),
 				"telefono" => $this->getTelefono(),
-				"username" => $this->getUsername()
+				"username" => $this->getUsername(),
+				"fecha"=> $this->getFecha()
 			];
 
 		}

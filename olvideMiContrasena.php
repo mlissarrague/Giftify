@@ -1,13 +1,13 @@
 <?php
-require_once'clases/repositorioUsuarios.php';
+require_once'soporte.php';
 if ($_POST) {
   $usuario = $_POST["username"];
-  $usuarioACambiar = $this->traerUsuarioPorUsuario($usuario);
-  var_dump($usuarioACambiar);exit;
+  $contrasenaNueva = $_POST["password"];
+  $usuarioCambio = $repo->getRepositorioUsuarios()->traerUsuarioPorUsuario($usuario);
+  $usuarioCambio->setPassword($contrasenaNueva);
+  $usuarioCambio->guardar($repo->getRepositorioUsuarios());
 }
-
-
- ?>
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,6 +15,7 @@ if ($_POST) {
     <title>Olvide Mi Contraseña</title>
   </head>
   <body>
+    Esta pagina crea un usuario nuevo cada vez que intento cambiar la contraseña
     <!-- <?php require_once'mainNav.php' ?> -->
     <form class=""  method="post">
       <label>Usuario</label>

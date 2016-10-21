@@ -26,18 +26,6 @@
 					if (trim(empty($_POST["telefono"]))) {
 		        $errores["telefono"] = "Debe ingresar un telefono";
 		      }
-					if(trim(empty($_POST["dia"]))){
-						$errores["dia"] = "Ingrese un dia";
-					}
-					elseif (($_POST["dia"])>31){
-						$errores["dia"] = "Ingrese un numero valido";
-					}
-					if (trim(empty($_POST["anio"]))) {
-						$errores["anio"] = "Ingrese un año";
-					}
-					elseif (($_POST["anio"])>1998){
-						$errores["anio"] = "Debe ser mayor a 18";
-					}
 					if ($_POST["password"] !== $_POST["passwordConfirm"]){
 						$errores["passwordConfirm"] = "Las contraseñas no coinciden";
 					}
