@@ -30,7 +30,8 @@
 	        		$usuarioArray["telefono"],
 							$usuarioArray["password"],
 							$usuarioArray["username"],
-							$usuarioArray["fecha"]
+							$usuarioArray["fecha"],
+							$usuarioArray["avatarDefault"]
 	        	);
 
 	            $usuarios[] = $usuario;

@@ -1,3 +1,34 @@
+<?php
+require_once("soporte.php");
+require_once("clases/validadorUsuario.php");
+require_once("funciones.php");
+$usernameDefault = "";
+
+	$errores = [];
+	$usernameDefault="";
+	// if ($_POST) {
+  //
+	// 	$validador = new ValidadorLogin();
+  //
+	// 	$errores = $validador->validar($_POST, $repo);
+	// 	if (empty($errores["username"])){
+	// 		$usernameDefault = $_POST["username"];
+	// 	}
+	// 	if (empty($errores))
+	// 	{
+	// 		$usuario = $repo->getRepositorioUsuarios()->traerUsuarioPorUsuario($_POST["username"]);
+	// 		var_dump($usuario);
+	// 		$auth->loguear($usuario);
+	// 		if ($validador->estaEnFormulario("recordame"))
+	// 		{
+	// 			$auth->guardarCookie($usuario);
+	// 		}
+	// 		header("Location:index.php");exit;
+	// 	}
+	// }
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 

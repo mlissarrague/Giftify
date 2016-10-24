@@ -70,95 +70,98 @@ img.logoNav{
 
     margin: auto;
 }
-.home li{
+li{
   list-style-type: none;
 }
-.home a {
+a {
   text-decoration: none;
   color: #000;
 }
-.home ul {
+ul {
     padding: 0;
     text-align: center;
     float: right;
 }
-.home header {
+header {
   /*HOME*/
     background-color: #fff;
     margin-bottom: 10px;
 }
 
-  .home .logo img {
+.logo img {
     /*HOME*/
       width: 100%;
   }
-  .home .logo {
+.logo {
     /*HOME*/
       margin: auto;
       max-width: 300px;
       width: 100%;
       border-bottom: 1px solid #607d8b;
   }
-.home .menus {
+.menus {
   /*HOME*/
     overflow: hidden;
     text-align: center;
 }
-.home label {
-  /*LOGIN*/
-  color: #000;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin: 20px 10px;
-  font-size: 1.2em;
-}
-.home input {
+input {
   padding: 3px;
   margin: 5px;
 
 }
-.home .second-nav button{
+.second-nav button{
   border: none;
   background-color: #2196f3;
   text-transform: uppercase;
   color: #FFF;
-  padding: 5px;
-  margin: auto 3px;
+  margin: auto;
   border-radius: 5px;
+  display: block;
+  padding: 5px;
+
 }
-    .home nav .main-nav {
+.second-nav input{
+  border-radius: 5px;
+  border: 1px solid #9f9f9f
+}
+nav .main-nav {
       /*HOME*/
       overflow: hidden;
     }
-    .home .ion-navicon-round{
+    .second-nav label{
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 1.2em;s
+    }
+.ion-navicon-round{
       color: #5d666b;
     }
-    .home .main-nav {
+.main-nav {
       /*HOME*/
         text-decoration: none;
         color: #000;
     }
-      .home .main-nav a:hover {
+.main-nav a:hover {
         /*HOME*/
         color: #2196f3;
         border-bottom: 2px solid #2196f3;
       }
-      .home .nav-resp {
+.nav-resp {
         /*HOME*/
         display: inline-block;
         float: none;
       }
-        .home .nav-resp li {
+.nav-resp li {
           /*HOME*/
           margin: 4px;
         }
-          .home .nav-resp li a {
+.nav-resp li a {
             /*HOME*/
               text-decoration: none;
               color: #000;
               font-size: 1.5em;
           }
-            .home .sbutton {
+.sbutton {
               /*HOME*/
                 background-color: #25b331;
                 color: #fff;
@@ -168,42 +171,58 @@ img.logoNav{
                 border-radius: 5px;
 
             }
-.home .banner img {
+.nombreLogueado{
+  text-transform: uppercase;
+  font-size: 1.2em;
+  display: block;
+}
+.logueado img{
+  width: 50px;
+  display: block;
+  margin: auto;
+}
+.ion-ios-cart{
+  font-size: 3em;
+}
+.ion-ios-cart:hover{
+  color: #3f51b5;
+}
+.banner img {
   /*HOME*/
     width: 100%;
 }
-.home .categorias article {
+.categorias article {
   /*HOME*/
     width: 100%;
     position: relative;
 }
-  .home .him, .her, .kids {
+.him, .her, .kids {
     /*HOME*/
       box-shadow: 0 0 5px #878e92;
       margin: 5px;
       margin: 1.166666666%;
       width: 97%;
   }
-    .home .textocate {
+.textocate {
       /*HOME*/
       margin: 10px;
       position: absolute;
       width: 50%;
       top: 0;
     }
-      .home .him h2, .home .her h2, .home .kids h2 {
+.him h2, .her h2, .kids h2 {
         /*HOME*/
           font-size: 3em;
       }
-      .home p {
+      .textocate p {
         /*HOME*/
           display: none;
       }
-    .home .him img, .home .her img, .home .kids img {
+.him img, .her img, .kids img {
       /*HOME*/
         width: 100%;
     }
-    .home .categorias button {
+.categorias button {
       /*HOME*/
         background-color: #4caf50;
         color: #fff;
@@ -212,10 +231,7 @@ img.logoNav{
         padding: 10px;
         padding: 10px;
     }
-.home .banner2 img {
-  /*HOME*/
-  width: 100%;
-}
+
 .main-footer {
   /*HOME*/
     background-color: #fff;
@@ -245,6 +261,7 @@ img.logoNav{
   background-size: cover;
   background-attachment: fixed;
   margin: 0;
+  font-size: 12px;
 }
 .registro .container{
   max-width: 900px;
@@ -253,7 +270,7 @@ img.logoNav{
 .registro h1{
   color: #fff;
 }
-.registro form{
+.registro .container form{
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: 7px;
   margin: 5px auto;
@@ -262,12 +279,12 @@ img.logoNav{
 fieldset{
   border: none;
 }
-.registro label{
+.registro .datos label{
   color: #fff;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
-.registro form button{
+.registro .container form button{
   background-color: #00bcd4;
   text-transform: uppercase;
   border-radius: 5px;
@@ -279,7 +296,7 @@ fieldset{
 .registro .typeText{
   border-radius: 7px;
   border: 2px solid #fff;
-  font-size: 1.2em;
+  font-size: 1.5em;
   padding: 3px;
   width: 100%;
   margin: 5px auto;
@@ -292,6 +309,7 @@ fieldset{
     background-attachment: fixed;
     width: 100%;
     height: 100%;
+    margin: 0;
 }
 
 .preguntas1 .container {
@@ -321,9 +339,6 @@ fieldset{
       font-size: 2em;
       color: #fff;
   }
-  .registro .fake-bg{
-    display: none;
-  }
   #owl-demo .item{
     margin: 3px;
   }
@@ -337,6 +352,8 @@ fieldset{
   }
   .owl-carousel{
     overflow: hidden;
+    max-width: 960px;
+    margin: auto;
   }
   .radius{
     border-radius: 10px;
@@ -374,6 +391,13 @@ fieldset{
         width: 45%;
         clear: both;
     }
+    .contenido {
+        width: 47%;
+        float: left;
+        height: 150px;
+        margin: 1.2%;
+    }
+
     .primeraColumna{
       float: left;
     }
@@ -383,12 +407,6 @@ fieldset{
     .nombreApellido, .mailTelefono, .contrasenaConfirm{
       width: 100%;
       height: 100px;
-    }
-    .contenido {
-        width: 47%;
-        float: left;
-        height: 150px;
-        margin: 1.2%;
     }
 }
 @media (min-width: 600px){
@@ -414,17 +432,16 @@ fieldset{
       display: inline-block;
       font-size: 1.5em;
   }
-  .registro form{
-    max-width: 500px;
-    margin: 5px auto;
-  }
-
   .contenido {
       width: 30%;
       font-size: 0.80em;
   }
 span{
   display: block;
+}
+.registro .container form{
+  max-width: 500px;
+  margin: 5px auto;
 }
 
 }
@@ -484,43 +501,43 @@ span{
       margin: auto;
       vertical-align: middle;
   }
-  .home header {
+  header {
     /*HOME*/
       overflow: hidden;
       border: 2px solid #c4cac4;
       background-color: #fff;
       margin: 20px auto;
   }
-  .home ul {
+   ul {
     /*HOME*/
       margin: 0;
   }
-    .home .header {
+.header {
       /*HOME*/
         max-width: 960px;
         margin: auto;
     }
-      .home .logo {
+.logo {
         /*HOME*/
           max-width: 1200px;
           border-bottom: none;
       }
-        .home .logo img {
+ .logo img {
           /*HOME*/
             margin-top: 45px;
             width: 30%;
             float: left;
         }
-  .home .menus {
+.menus {
     /*HOME*/
       float: left;
       width: 70%;
   }
-    .home .second-nav, .home .main-nav {
+.second-nav, .main-nav {
       /*HOME*/
         display: block;
     }
-    .home .second-nav {
+.second-nav {
       /*HOME*/
         float: right;
         width: 100%;
@@ -529,23 +546,32 @@ span{
         margin-top: 0;
         margin-top: 10px;
         padding: 2em;
-        color: #c1bcbc;
         border-bottom: 1px solid #9e9e9e;
     }
 
-    .home .usuario1{
+.usuario1{
       float: left;
     }
-    .home .contrasena1{
+.contrasena1{
       float: left;
     }
-    .home .second-nav button{
+.second-nav button{
       margin-top: 5px;
+      display: inline;
+      float: left;
     }
-    .home .second-nav{
+.second-nav{
       float: right;
     }
-      .home .main-nav {
+.second-nav section{
+  overflow: hidden;
+  display: block;
+  float: left;
+}
+.second-nav .recordarme{
+  display: inline;
+}
+.main-nav {
         /*HOME*/
           display: inline-block;
           width: 100%;
@@ -553,31 +579,40 @@ span{
           font-size: 1.5em;
           border-top: 1px solid #c1bcbc;
       }
-        .home .main-nav ul {
+.main-nav ul {
           /*HOME*/
           float: right;
         }
-          .home .main-nav li {
+.main-nav li {
             /*HOME*/
               float: left;
               margin: 10px;
           }
-            .home .main-nav li a {
+.main-nav li a {
               /*HOME*/
                 text-decoration: none;
                 color: #000;
             }
-              .home .nav-resp li a {
+.nav-resp li a {
                 /*HOME*/
                   font-size: 1em;
               }
-  .home .banner {
+.logueado img{
+  display: inline;
+  float: left;
+  margin: 0;
+}
+.ion-ios-cart{
+  float: left;
+  margin: 7px 5px 5px 10px;
+}
+.banner {
     /*HOME*/
       margin: 15px auto;
       max-width: 960px;
       margin: auto;
   }
-  .home .categorias {
+.categorias {
     /*HOME*/
       max-width: 960px;
       margin: auto;
@@ -586,23 +621,22 @@ span{
       margin-top: 10px;
   }
 
-    .home .categorias article {
-      /*HOME*/
+.home .categorias article {
         float: left;
         width: 31%;
         position: relative;
         margin: 1.166666%;
     }
-      .home .himher {
+.home .himher {
         /*HOME*/
           margin: 0;
           display: inline;
           width: 35%;
       }
-        .home .him, .home .her, .home .kids {
+ .home .him, .home .her, .home .kids {
             width: 97%;
         }
-          .home .textocate {
+.textocate {
             /*HOME*/
               margin: 10px;
               position: absolute;
@@ -614,20 +648,16 @@ span{
               display: inline-block;
               font-size: 1em;
           }
-          .home .him img, .home .her img, .home .kids img {
+.him img,.her img,.kids img {
             /*HOME*/
               width: 100%;
               box-shadow: 2px 2px 2px #607d8b;
           }
-        .home .kids {
+.home .kids {
           /*HOME*/
             clear: none;
         }
-  .home .banner2 {
-    /*HOME*/
-      margin: 15px auto;
-      max-width: 960px;
-  }
+
   .main-footer {
       background-color: #fff;
       width: 100%;

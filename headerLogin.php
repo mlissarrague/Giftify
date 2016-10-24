@@ -1,5 +1,7 @@
 
 <form class="" method="post">
+  <section>
+
     <div class="usuario1"><label>Usuario</label><input type="text" name="username" id="email" value= "<?php  echo $usernameDefault ?>" ><br>
       <strong style="color:#f00">
        <?php if(isset($errores["username"])){
@@ -11,7 +13,13 @@
       }?></strong>
     </div>
       <button type="submit" name="button">Ingresar</button>
-      Recordame
+    </section>
+    <section>
+
+      <div class="recordarme">
+      <b>Recordame</b>
       <input name="recordame" type="checkbox" value="true">
+    </div>
       <a href="olvideMiContrasena.php">Olvide Mi Contraseña</a>
+    </section>
 </form>

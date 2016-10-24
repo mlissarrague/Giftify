@@ -175,7 +175,6 @@ function registrarUsuario(){
     }
 
     function autologuear() {
-        session_start();
         if (!estaLogueado()) {
             if (isset($_COOKIE["usuarioLogueado"])) {
                 $usuario = traerUsuarioPorEmail($_COOKIE["usuarioLogueado"]);

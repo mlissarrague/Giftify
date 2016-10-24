@@ -1,5 +1,4 @@
 <?php
-require_once("funciones.php");
 require_once("soporte.php");
 require_once("clases/validadorUsuario.php");
 $repoUsuarios = $repo->getRepositorioUsuarios();
@@ -8,18 +7,17 @@ $nombreDefault = "";
 $emailDefault = "";
 $apellidoDefault= "";
 $telefonoDefault = "";
-$diaDefault = "";
-$anioDefault = "";
 $usernameDefault = "";
-if (estaLogueado()) {
-    header("Location:inicio.php");exit;
+if ($auth->estaLogueado()) {
+
+    header("Location:index.php");exit;
 }
+
 if (!empty($_POST))
 {
 
     //Se envió información
-    $errores = validarRegistracion();
-
+    $errores = [];
     if (empty($errores)){
       $validador = new ValidadorUsuario();
       //Se envió información
@@ -35,7 +33,9 @@ if (!empty($_POST))
               $_POST["mail"],
               $_POST["telefono"],
               $_POST["password"],
-              $_POST["username"]
+              $_POST["username"],
+              $_POST["fecha"],
+              $avatarDefault = "imgs/avatar.jpg"
           );
           $usuario->setPassword($_POST["password"]);
           $usuario->guardar($repoUsuarios);
@@ -56,12 +56,6 @@ if (!empty($_POST))
     if (empty($errores["telefono"])){
       $telefonoDefault = $_POST["telefono"];
     }
-    if (empty($errores["dia"])){
-        $diaDefault = $_POST["dia"];
-    }
-    if (empty($errores["anio"])){
-      $anioDefault = $_POST["anio"];
-    }
     if (!isset($errores["username"])){
         $usernameDefault = $_POST["username"];
     }
@@ -80,20 +74,20 @@ if (!empty($_POST))
 </head>
 <body class="registro">
   <span class="fake-bg"></span>
+  <?php require_once('mainNav.php') ?>
     <div class="container">
-        <?php require_once('mainNav.php') ?>
         <form id='register' action='' method='post' name="form" >
             <fieldset>
                 <legend>
                     <h1>Registro</h1>
                 </legend>
                 <div class="datos">
-                  <div class="">
+                  <div class="nombreApellido">
 
                     <div class="primeraColumna">
                         <label>Nombre</label>
                         <br>
-                        <input type="text" placeholder="Nombre" class="name" name="name" value='<?php echo $nombreDefault?>'><br>
+                        <input type="text" placeholder="Nombre" class="typeText" name="name" value='<?php echo $nombreDefault?>'><br>
                         <strong style="color: #f00">
                         <?php
                         if (isset($errores["name"])) {
@@ -105,7 +99,7 @@ if (!empty($_POST))
                     <div class="segundaColumna">
                         <label>Apellido</label>
                         <br>
-                        <input type="text" placeholder="Apellido" class="lastname" name="lastname" value="<?php echo $apellidoDefault?>">
+                        <input type="text" placeholder="Apellido" class="typeText" name="lastname" value="<?php echo $apellidoDefault?>">
                         <br>
                         <strong style="color: #f00">
                         <?php if(isset($errores["lastname"])){
@@ -114,12 +108,12 @@ if (!empty($_POST))
                         ?></strong>
                     </div>
                   </div>
-                  <div class="">
+                  <div class="mailTelefono">
 
                     <div class="primeraColumna">
                         <label>Mail</label>
                         <br>
-                        <input type="text" placeholder="ejemplo@ejemplo.com" class="mail" name="mail" value="<?php echo $emailDefault?>">
+                        <input type="text" placeholder="ejemplo@ejemplo.com" class="typeText" name="mail" value="<?php echo $emailDefault?>">
                         <br>
                         <strong style="color: #f00">
                         <?php if (isset($errores["mail"])) {
@@ -130,7 +124,7 @@ if (!empty($_POST))
                     <div class="segundaColumna">
                         <label>Telefono</label>
                         <br>
-                        <input type="tel" name="telefono" class="telefono" value="<?php echo $telefonoDefault?>"><br>
+                        <input type="tel" name="telefono" class="typeText" value="<?php echo $telefonoDefault?>"><br>
                         <strong style="color: #f00">
                         <?php if (isset($errores["telefono"])) {
                             echo $errores["telefono"];
@@ -138,10 +132,12 @@ if (!empty($_POST))
                         ?></strong>
                     </div>
                   </div>
+                  <div class="contrasenaConfirm">
+
                     <div class="primeraColumna">
                         <label>Contraseña</label>
                         <br>
-                        <input type="password" class="password" placeholder="Contraseña" name="password">
+                        <input type="password" class="typeText" placeholder="Contraseña" name="password">
                         <br>
                         <strong style="color: #f00">
                         <?php if (isset($errores["password"])) {
@@ -152,7 +148,7 @@ if (!empty($_POST))
                     <div class="segundaColumna">
                     <label>Confirmar Contraseña</label>
                     <br>
-                    <input type="password" class="passwordConfirm" placeholder="Contraseña" name="passwordConfirm">
+                    <input type="password" class="typeText" placeholder="Contraseña" name="passwordConfirm">
                     <br>
                     <strong style="color: #f00">
                     <?php if (isset($errores["passwordConfirm"])) {
@@ -160,39 +156,10 @@ if (!empty($_POST))
                     }
                     ?></strong>
                   </div>
+                </div>
                     <div class="fechasDeNacimiento">
                         <label>Fecha de nacimiento</label>
-                        <br><label>Dia</label>
-                        <input type="text" name="dia" value="<?php echo $diaDefault?>"style="width:40px">
-                        <label>Mes</label>
-                        <select>
-                            <option value="vaule" 01 "">Enero</option>
-                            <option value="vaule" 02 "">Febrero</option>
-                            <option value="vaule" 03 "">Marzo</option>
-                            <option value="vaule" 04 "">Abril</option>
-                            <option value="vaule" 05 "">Mayo</option>
-                            <option value="vaule" 06 "">Junio</option>
-                            <option value="vaule" 07 "">Julio</option>
-                            <option value="vaule" 08 "">Agosto</option>
-                            <option value="vaule" 09 "">Septiembre</option>
-                            <option value="vaule" 10 "">Octubre</option>
-                            <option value="vaule" 11 "">Noviembre</option>
-                            <option value="vaule" 12 "">Diciembre</option>
-                        </select>
-                        <label>Año</label>
-                        <input type="text" name="anio" value="<?php echo $anioDefault?>" style="width:80px">
-                        <br>
-                        <strong style="color: #f00">
-                        <?php if (isset($errores["dia"])) {
-                            echo $errores["dia"];
-                        }
-                        ?></strong>
-                        <br>
-                        <strong style="color: #f00">
-                        <?php if (isset($errores["anio"])) {
-                            echo $errores["anio"];
-                        }
-                        ?></strong>
+                          <input type="date" name="fecha" value="" class="typeText">
                     </div>
                     <div class="">
                         <label>Sexo</label>
@@ -206,7 +173,7 @@ if (!empty($_POST))
                     <div class="">
                         <label>Nombre de Usuario</label>
                         <br>
-                        <input type="text" placeholder="Nombre de usuario" class="username" name="username" value="<?php echo $usernameDefault?>">
+                        <input type="text" placeholder="Nombre de usuario" class="typeText" name="username" value="<?php echo $usernameDefault?>">
                         <br>
                         <strong style="color: #f00">
                         <?php if(isset($errores["username"])){
@@ -220,10 +187,11 @@ if (!empty($_POST))
                       <br>
                     </div>
                 </div>
+                </div>
             </fieldset>
         </form>
-        <?php require_once('mainFooter.php') ?>
     </div>
+    <?php require_once('mainFooter.php') ?>
     <script src="js/javascript3.js" charset="utf-8"></script>
 </body>
 

@@ -9,8 +9,9 @@
 		private $telefono;
 		private $username;
 		private $fecha;
+			private $avatarDefault;
 
-		public function __construct($name, $lastname, $email, $telefono, $password, $username, $fecha) {
+		public function __construct($name, $lastname, $email, $telefono, $password, $username, $fecha, $avatarDefault) {
 			$this->name =$name;
 			$this->lastname = $lastname;
 			$this->email = $email;
@@ -18,6 +19,7 @@
 			$this->password = $password;
 			$this->telefono = $telefono;
 			$this->fecha = $fecha;
+			$this->avatarDefault = $avatarDefault;
 	}
 
 		public function getName(){
@@ -43,6 +45,9 @@
 		public function getFecha(){
 			return $this->fecha;
 		}
+		public function getAvatarDefault(){
+			return $this->avatarDefault;
+		}
 		public function setName($name) {
 			$this->name = $name;
 		}
@@ -64,6 +69,10 @@
 		public function setFecha($fecha){
 			$this->fecha = $fecha;
 		}
+		public function setAvatar($avatarDefault){
+			$this->avatarDefault = $avatarDefault;
+		}
+
 
 		public function guardar(RepositorioUsuarios $repo) {
 			$repo->guardar($this);
@@ -77,7 +86,8 @@
 				"password" => $this->getPassword(),
 				"telefono" => $this->getTelefono(),
 				"username" => $this->getUsername(),
-				"fecha"=> $this->getFecha()
+				"fecha"=> $this->getFecha(),
+				"avatarDefault" => $this->getAvatarDefault()
 			];
 
 		}
