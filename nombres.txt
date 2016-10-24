@@ -1,5 +1,3 @@
-Miguel = Correcciones primer sprint;
-Juan = Ajax;
-Mercedes = Validacion y preguntas;
-
-Se modificaron algunos arreglos de el primer sprint, se hicieron las validaciones y la animacion de las preguntas. Se llamo a ajax y se pasaron los archivos a php.;
+Juan Cruz Alric
+Miguel Guarrochena
+Mechi Lissarrague

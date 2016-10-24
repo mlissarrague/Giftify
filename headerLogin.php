@@ -1,15 +1,15 @@
 
 <form class="" method="post">
   <section>
-
-    <div class="usuario1"><label>Usuario</label><input type="text" name="username" id="email" value= "<?php  echo $usernameDefault ?>" ><br>
+<input type="hidden" name="formulario" value="login">
+    <div class="usuario1"><label>Usuario</label><input type="text" name="username-login" id="email" value= "<?php  echo $usernameLoginDefault ?>" ><br>
       <strong style="color:#f00">
-       <?php if(isset($errores["username"])){
-      echo $errores["username"];}?></strong>
+       <?php if(isset($errores["username-login"])){
+      echo $errores["username-login"];}?></strong>
     </div>
-    <div class="contrasena1"><label>Contraseña</label><input type="password" name="password" value="" id="password"><br>
-      <strong style="color:#f00"> <?php if(isset($errores["password"])){
-        echo $errores["password"];
+    <div class="contrasena1"><label>Contraseña</label><input type="password" name="password-login" value="" id="password"><br>
+      <strong style="color:#f00"> <?php if(isset($errores["password-login"])){
+        echo $errores["password-login"];
       }?></strong>
     </div>
       <button type="submit" name="button">Ingresar</button>

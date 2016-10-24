@@ -2,7 +2,7 @@
 <header>
     <section class="header">
         <article class="logo">
-            <img src="imgs/logo2.png" alt="logo" />
+            <a href="index.php"><img src="imgs/logo2.png" alt="logo" /></a>
         </article>
         <div class="menus">
             <article>
@@ -25,9 +25,11 @@
 
                 <ul class="nav-resp">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="registro2.php">Registrarse</a></li>
+                    <?php if (!$auth->estaLogueado()){?>
+                      <li><a href="registro2.php">Registrarse</a></li>
+                    <?php } ?>
                     <li><a href="#">Store</a></li>
-                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#">Contact</a></li>
                     <li>
                         <input type="text" name="name" value="">
                         <button type="button" name="button" class="sbutton">Search</button>

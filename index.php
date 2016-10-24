@@ -3,18 +3,18 @@
 	require_once("clases/validadorLogin.php");
 
 	$errores = [];
-	$usernameDefault="";
+	$usernameLoginDefault="";
 	if ($_POST) {
 
 		$validador = new ValidadorLogin();
 
 		$errores = $validador->validar($_POST, $repo);
-		if (empty($errores["username"])){
-			$usernameDefault = $_POST["username"];
+		if (empty($errores["username-login"])){
+			$usernameLoginDefault = $_POST["username-login"];
 		}
 		if (empty($errores))
 		{
-			$usuario = $repo->getRepositorioUsuarios()->traerUsuarioPorUsuario($_POST["username"]);
+			$usuario = $repo->getRepositorioUsuarios()->traerUsuarioPorUsuario($_POST["username-login"]);
 			var_dump($usuario);
 			$auth->loguear($usuario);
 			if ($validador->estaEnFormulario("recordame"))

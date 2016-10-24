@@ -1,6 +1,7 @@
 <?php
 require_once("soporte.php");
 require_once("clases/validadorUsuario.php");
+require_once("clases/validadorLogin.php");
 $repoUsuarios = $repo->getRepositorioUsuarios();
 $errores = [];
 $nombreDefault = "";
@@ -8,13 +9,13 @@ $emailDefault = "";
 $apellidoDefault= "";
 $telefonoDefault = "";
 $usernameDefault = "";
+$usernameLoginDefault = "";
 if ($auth->estaLogueado()) {
 
     header("Location:index.php");exit;
 }
-
-if (!empty($_POST))
-{
+if (!empty($_POST)) {
+  if ($_POST["formulario"] == "registro"){
 
     //Se envió información
     $errores = [];
@@ -24,42 +25,63 @@ if (!empty($_POST))
       $errores = $validador->validar($_POST, $repo);
 
       if (empty($errores)){
-          //No hay Errores
+        //No hay Errores
 
-          //Primero: Lo registro
-          $usuario = new Usuario(
-              $_POST["name"],
-              $_POST["lastname"],
-              $_POST["mail"],
-              $_POST["telefono"],
-              $_POST["password"],
-              $_POST["username"],
-              $_POST["fecha"],
-              $avatarDefault = "imgs/avatar.jpg"
-          );
-          $usuario->setPassword($_POST["password"]);
-          $usuario->guardar($repoUsuarios);
+        //Primero: Lo registro
+        $usuario = new Usuario(
+        $_POST["name"],
+        $_POST["lastname"],
+        $_POST["mail"],
+        $_POST["telefono"],
+        $_POST["password"],
+        $_POST["username"],
+        $_POST["fecha"],
+        $avatarDefault = "imgs/avatar.jpg"
+      );
+      $usuario->setPassword($_POST["password"]);
+      $usuario->guardar($repoUsuarios);
 
-          //Segundo: Lo envio al exito
-          header("Location:exito2.php");exit;
+      //Segundo: Lo envio al exito
+      header("Location:exito2.php");exit;
 
     }
     if (empty($errores["name"])){
-        $nombreDefault = $_POST["name"];
+      $nombreDefault = $_POST["name"];
     }
     if (empty($errores["lastname"])){
       $apellidoDefault = $_POST["lastname"];
     }
     if (empty($errores["mail"])){
-        $emailDefault = $_POST["mail"];
+      $emailDefault = $_POST["mail"];
     }
     if (empty($errores["telefono"])){
       $telefonoDefault = $_POST["telefono"];
     }
     if (!isset($errores["username"])){
-        $usernameDefault = $_POST["username"];
+      $usernameDefault = $_POST["username"];
     }
   }
+}else{
+  if ($_POST) {
+    $validador = new ValidadorLogin();
+
+    $errores = $validador->validar($_POST, $repo);
+    if (empty($errores["username-login"])){
+      $usernameLoginDefault = $_POST["username-login"];
+    }
+    if (empty($errores))
+    {
+      $usuario = $repo->getRepositorioUsuarios()->traerUsuarioPorUsuario($_POST["username-login"]);
+      var_dump($usuario);
+      $auth->loguear($usuario);
+      if ($validador->estaEnFormulario("recordame"))
+      {
+        $auth->guardarCookie($usuario);
+      }
+      header("Location:index.php");exit;
+    }
+  }
+}
 }
 ?>
 <!DOCTYPE html>
@@ -73,7 +95,6 @@ if (!empty($_POST))
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body class="registro">
-  <span class="fake-bg"></span>
   <?php require_once('mainNav.php') ?>
     <div class="container">
         <form id='register' action='' method='post' name="form" >
@@ -83,7 +104,7 @@ if (!empty($_POST))
                 </legend>
                 <div class="datos">
                   <div class="nombreApellido">
-
+                    <input type="hidden" name="formulario" value="registro">
                     <div class="primeraColumna">
                         <label>Nombre</label>
                         <br>

@@ -9,23 +9,20 @@
 
 			$errores = [];
 
-	        if (empty(trim($datos["username"])))
-	        {
-	            $errores["username"] = "Por favor ingrese mail";
+	        if (empty(trim($datos["username-login"]))){
+	            $errores["username-login"] = "Por favor ingrese usuario";
 	        }
-	        if (empty(trim($datos["password"])))
-	        {
-	            $errores["password"] = "Por favor ingrese password";
+	        if (empty(trim($datos["password-login"]))){
+	            $errores["password-login"] = "Por favor ingrese password";
 	        }
-	        if (!$repoUsuarios->existeElUsuario($datos["username"]))
-	        {
-	            $errores["username"] = "El usuario no existe";
+	        if (!$repoUsuarios->existeElUsuario($datos["username-login"])){
+	            $errores["username-login"] = "El usuario no existe";
 	        }
 	        else {
-	            $usuario = $repoUsuarios->traerUsuarioPorUsuario($datos["username"]);
+	            $usuario = $repoUsuarios->traerUsuarioPorUsuario($datos["username-login"]);
 
-	            if (!password_verify($datos["password"], $usuario->getPassword())) {
-	                $errores["password"] ="La contrasena es incorrecta";
+	            if (!password_verify($datos["password-login"], $usuario->getPassword())) {
+	                $errores["password-login"] ="La contrasena es incorrecta";
 	            }
 	        }
 	        return $errores;
