@@ -108,7 +108,7 @@ if (!empty($_POST)) {
                     <div class="primeraColumna">
                         <label>Nombre</label>
                         <br>
-                        <input type="text" placeholder="Nombre" class="typeText" name="name" value='<?php echo $nombreDefault?>'><br>
+                        <input type="text" placeholder="Juan" class="typeText" name="name" value='<?php echo $nombreDefault?>'><br>
                         <strong style="color: #f00">
                         <?php
                         if (isset($errores["name"])) {
@@ -120,7 +120,7 @@ if (!empty($_POST)) {
                     <div class="segundaColumna">
                         <label>Apellido</label>
                         <br>
-                        <input type="text" placeholder="Apellido" class="typeText" name="lastname" value="<?php echo $apellidoDefault?>">
+                        <input type="text" placeholder="Perez" class="typeText" name="lastname" value="<?php echo $apellidoDefault?>">
                         <br>
                         <strong style="color: #f00">
                         <?php if(isset($errores["lastname"])){
