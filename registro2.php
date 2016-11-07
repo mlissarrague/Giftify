@@ -10,6 +10,7 @@ $apellidoDefault= "";
 $telefonoDefault = "";
 $usernameDefault = "";
 $usernameLoginDefault = "";
+$fechaDefault = "";
 if ($auth->estaLogueado()) {
 
     header("Location:index.php");exit;
@@ -35,14 +36,14 @@ if (!empty($_POST)) {
         $_POST["telefono"],
         $_POST["password"],
         $_POST["username"],
-        $_POST["fecha"],
+        strval($_POST["fecha"]),
         $avatarDefault = "imgs/avatar.jpg"
       );
       $usuario->setPassword($_POST["password"]);
       $usuario->guardar($repoUsuarios);
 
       //Segundo: Lo envio al exito
-      header("Location:exito2.php");exit;
+      header("Location:index.php");exit;
 
     }
     if (empty($errores["name"])){
@@ -59,6 +60,9 @@ if (!empty($_POST)) {
     }
     if (!isset($errores["username"])){
       $usernameDefault = $_POST["username"];
+    }
+    if (!isset($errores["fecha"])){
+      $fechaDefault = $_POST["fecha"];
     }
   }
 }else{
@@ -180,7 +184,12 @@ if (!empty($_POST)) {
                 </div>
                     <div class="fechasDeNacimiento">
                         <label>Fecha de nacimiento</label>
-                          <input type="date" name="fecha" value="" class="typeText">
+                          <input type="date" name="fecha" value="<?php echo $fechaDefault?>" class="typeText">
+                          <strong style="color: #f00">
+                          <?php if (isset($errores["fecha"])) {
+                              echo $errores["fecha"];
+                          }
+                          ?></strong>
                     </div>
                     <div class="">
                         <label>Sexo</label>

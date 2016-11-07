@@ -32,7 +32,6 @@
 							$usuarioArray["password"],
 							$usuarioArray["username"],
 							$usuarioArray["fecha"]
-							// $usuarioArray["avatarDefault"]
 	        	);
 
 	            $usuarios[] = $usuario;
@@ -44,7 +43,7 @@
 
 	    public function guardar(Usuario $usuario) {
 	    	if ($usuario->getId() == null) {
-	    		$sql = "INSERT into usuarios(ID,name,lastname,email,telefono,password,username,fecha) values (default, :name, :lastname, :email, :telefono, :password, :username, '2106-04-12')";
+	    		$sql = "INSERT into usuarios(ID,name,lastname,email,telefono,password,username,fecha) values (default, :name, :lastname, :email, :telefono, :password, :username, :fecha)";
 	    	}
 
 
@@ -56,8 +55,7 @@
 	    	$query->bindValue(":telefono", $usuario->getTelefono(), PDO::PARAM_INT);
 	    	$query->bindValue(":password", $usuario->getPassword(), PDO::PARAM_STR);
 	    	$query->bindValue(":username", $usuario->getUsername(), PDO::PARAM_STR);
-	    	// $query->bindValue(":fecha", $usuario->getFecha(), PDO::PARAM_STR);
-	    	// $query->bindValue(":avatarDefault", $usuario->getAvatarDefault(), PDO::PARAM_STR);
+	    	$query->bindValue(":fecha", $usuario->getFecha(), PDO::PARAM_STR);
 
 	    	if ($usuario->getId() != null) {
 	    		$query->bindValue(":id", $usuario->getId(), PDO::PARAM_INT);
@@ -99,5 +97,33 @@
 
 	        return false;
 	    }
-			
+			public function traerUsuarioPorUsuario($username) {
+	        $sql = "SELECT * FROM usuarios WHERE username = :username";
+
+	        $query = $this->conn->prepare($sql);
+
+	        $query->bindValue(":username", $username, PDO::PARAM_STR);
+
+	        $query->execute();
+
+	        $usuarioArray = $query->fetch();
+
+	        if ($usuarioArray) {
+	        	$usuario = new Usuario(
+	        		// $usuarioArray["id"],
+							$usuarioArray["name"],
+							$usuarioArray["lastname"],
+	        		$usuarioArray["email"],
+	        		$usuarioArray["telefono"],
+							$usuarioArray["password"],
+							$usuarioArray["username"],
+							$usuarioArray["fecha"]
+							// $usuarioArray["avatarDefault"]
+	        	);
+	        	return $usuario;
+	        }
+
+	        return false;
+	    }
+
 	}

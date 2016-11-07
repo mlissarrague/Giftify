@@ -15,7 +15,6 @@
 		if (empty($errores))
 		{
 			$usuario = $repo->getRepositorioUsuarios()->traerUsuarioPorUsuario($_POST["username-login"]);
-			var_dump($usuario);
 			$auth->loguear($usuario);
 			if ($validador->estaEnFormulario("recordame"))
 			{

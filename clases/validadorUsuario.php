@@ -41,6 +41,9 @@
 					elseif(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,30}$/', $_POST["password"])) {
 						$errores["password"] = "Debe tener al menos un numero,<br> una letra, no contener<br> caracteres especiales y <br>estar entre 8 y 30 caracteres";
 					}
+					if (empty($_POST["fecha"])) {
+						$errores["fecha"] = "Ingrese su nacimiento";
+					}
 	        return $errores;
 		}
 	}
